@@ -31,7 +31,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-freemarker</artifactId>
         </dependency>
-
         <!-- 数据库相关 -->
         <dependency>
             <groupId>org.liquibase</groupId>
