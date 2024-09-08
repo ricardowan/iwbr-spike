@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+
+    <changeSet author="wbr" id="2024090523140001">
+        <preConditions onFail="CONTINUE" onError="CONTINUE" onErrorMessage="sp_good 表已存在"
+                       onFailMessage="sp_good 表已存在">
+            <not>
+                <tableExists tableName="sp_good"/>
+            </not>
+        </preConditions>
+        <createTable remarks="商品表" tableName="sp_good">
+            <column name="id" remarks="主键" type="VARCHAR(60)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="create_at" remarks="创建时间" type="DATETIME"/>
+            <column name="update_at" remarks="更新时间" type="DATETIME"/>
+            <column name="enabled" remarks="逻辑删除字段" type="BOOLEAN" defaultValueBoolean="true"/>
+            <column name="operator" remarks="操作人" type="VARCHAR(255)"/>
+
+            <column name="good_name" remarks="商品名称" type="VARCHAR(255)"/>
+            <column name="good_price" remarks="商品价格" type="INT"/>
+            <column name="good_spike_price" remarks="商品秒杀价格" type="INT"/>
+            <column name="good_stock_num" remarks="库存数量" type="INT"/>
+            <column name="good_alert_num" remarks="库存预警数量" type="INT"/>
+            <column name="good_icon" remarks="商品缩略图" type="VARCHAR(200)"/>
+            <column name="good_images" remarks="商品图片列表" type="LONGTEXT"/>
+            <column name="good_spu_id" remarks="spu_id" type="VARCHAR(60)"/>
+            <column name="good_category_ids" remarks="商品分类类目id" type="VARCHAR(755)"/>
+            <column name="good_category_names" remarks="商品分类类目名称" type="VARCHAR(755)"/>
+            <column name="good_brand_id" remarks="商品品牌id" type="VARCHAR(60)"/>
+            <column name="good_brand_name" remarks="商品品牌名称" type="VARCHAR(255)"/>
+
+            <column name="good_scope" remarks="规模" type="VARCHAR(200)"/>
+            <column name="good_sale_num" remarks="商品销量" type="INT"/>
+            <column name="good_comment_num" remarks="商品评论数量" type="INT"/>
+            <column name="good_spike_begin" remarks="秒杀开始时间" type="DATETIME"/>
+            <column name="good_spike_end" remarks="秒杀结束时间" type="DATETIME"/>
+            <column name="good_status" remarks="商品状态（1普通商品/2秒杀商品）" type="INT"/>
+
+            <column name="good_lock" remarks="锁定状态（1未锁定/2已锁定）" type="INT"/>
+            <column name="good_spike_num" remarks="参与秒杀商品数量" type="INT"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="wbr" id="2024090820380001">
+        <preConditions onFail="CONTINUE" onError="CONTINUE" onErrorMessage="sp_activity 表已存在"
+                       onFailMessage="sp_activity 表已存在">
+            <not>
+                <tableExists tableName="sp_activity"/>
+            </not>
+        </preConditions>
+        <createTable remarks="商品秒杀活动" tableName="sp_activity">
+            <column name="id" remarks="主键" type="VARCHAR(60)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="create_at" remarks="创建时间" type="DATETIME"/>
+            <column name="update_at" remarks="更新时间" type="DATETIME"/>
+            <column name="enabled" remarks="逻辑删除字段" type="BOOLEAN" defaultValueBoolean="true"/>
+            <column name="operator" remarks="操作人" type="VARCHAR(255)"/>
+
+            <column name="act_name" remarks="活动名称" type="VARCHAR(255)"/>
+            <column name="act_status" remarks="活动状态" type="INT"/>
+            <column name="act_begin_time" remarks="活动开始时间" type="DATETIME"/>
+            <column name="act_end_time" remarks="活动结束时间" type="DATETIME"/>
+            <column name="act_total_time" remarks="活动总耗时" type="FLOAT"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="wbr" id="2024090820380002">
+        <preConditions onFail="CONTINUE" onError="CONTINUE" onErrorMessage="sp_brand 表已存在"
+                       onFailMessage="sp_brand 表已存在">
+            <not>
+                <tableExists tableName="sp_brand"/>
+            </not>
+        </preConditions>
+        <createTable remarks="商品品牌表" tableName="sp_brand">
+            <column name="id" remarks="主键" type="VARCHAR(60)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="create_at" remarks="创建时间" type="DATETIME"/>
+            <column name="update_at" remarks="更新时间" type="DATETIME"/>
+            <column name="enabled" remarks="逻辑删除字段" type="BOOLEAN" defaultValueBoolean="true"/>
+            <column name="operator" remarks="操作人" type="VARCHAR(255)"/>
+
+            <column name="brand_name" remarks="品牌名称" type="VARCHAR(255)"/>
+            <column name="brand_icon" remarks="品牌logo" type="VARCHAR(255)"/>
+            <column name="brand_letter" remarks="品牌名称首字母" type="VARCHAR(1)"/>
+            <column name="brand_sort" remarks="品牌排序" type="INT"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="wbr" id="2024090820380003">
+        <preConditions onFail="CONTINUE" onError="CONTINUE" onErrorMessage="sp_category 表已存在"
+                       onFailMessage="sp_category 表已存在">
+            <not>
+                <tableExists tableName="sp_category"/>
+            </not>
+        </preConditions>
+        <createTable remarks="商品分类表" tableName="sp_category">
+            <column name="id" remarks="主键" type="VARCHAR(60)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="create_at" remarks="创建时间" type="DATETIME"/>
+            <column name="update_at" remarks="更新时间" type="DATETIME"/>
+            <column name="enabled" remarks="逻辑删除字段" type="BOOLEAN" defaultValueBoolean="true"/>
+            <column name="operator" remarks="操作人" type="VARCHAR(255)"/>
+
+            <column name="cat_name" remarks="分类名称" type="VARCHAR(255)"/>
+            <column name="cat_enable" remarks="是否启用" type="BOOLEAN" defaultValueBoolean="true"/>
+            <column name="cat_type" remarks="分类类型（menu菜单/catalog目录）" type="VARCHAR（10）"/>
+            <column name="cat_sort" remarks="品牌名称首字母" type="VARCHAR(1)"/>
+            <column name="cat_parent_id" remarks="品牌排序" type="INT"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="wbr" id="2024090820380004">
+        <preConditions onFail="CONTINUE" onError="CONTINUE" onErrorMessage="sp_good_activity_ref 表已存在"
+                       onFailMessage="sp_good_activity_ref 表已存在">
+            <not>
+                <tableExists tableName="sp_good_activity_ref"/>
+            </not>
+        </preConditions>
+        <createTable remarks="商品与秒杀活动关联表" tableName="sp_good_activity_ref">
+            <column name="id" remarks="主键" type="VARCHAR(60)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="create_at" remarks="创建时间" type="DATETIME"/>
+            <column name="update_at" remarks="更新时间" type="DATETIME"/>
+            <column name="enabled" remarks="逻辑删除字段" type="BOOLEAN" defaultValueBoolean="true"/>
+            <column name="operator" remarks="操作人" type="VARCHAR(255)"/>
+
+            <column name="good_id" remarks="分类名称" type="VARCHAR(255)"/>
+            <column name="activity_id" remarks="是否启用" type="BOOLEAN" defaultValueBoolean="true"/>
+            <column name="good_spike_price" remarks="商品秒杀价格" type="INT"/>
+            <column name="good_spike_num" remarks="参与秒杀商品数量" type="INT"/>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

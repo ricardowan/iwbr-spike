@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.iwbr.spike.goods.mapper.BrandMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.iwbr.spike.goods.entity.Brand">
+        <id column="id" property="id" />
+        <result column="create_at" property="createAt" />
+        <result column="update_at" property="updateAt" />
+        <result column="enabled" property="enabled" />
+        <result column="operator" property="operator" />
+        <result column="brand_name" property="brandName" />
+        <result column="brand_icon" property="brandIcon" />
+        <result column="brand_letter" property="brandLetter" />
+        <result column="brand_sort" property="brandSort" />
+    </resultMap>
+
+</mapper>

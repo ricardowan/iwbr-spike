@@ -6,7 +6,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  * @description: 基础实体
@@ -29,7 +29,7 @@ public abstract class BaseEntity implements Serializable {
     @TableField(value = "create_at", fill = FieldFill.INSERT)
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     @Schema(title = "创建时间")
-    private Date createAt;
+    private LocalDateTime createAt;
 
     /**
      * 更新时间
@@ -37,7 +37,7 @@ public abstract class BaseEntity implements Serializable {
     @TableField(value = "update_at", fill = FieldFill.INSERT_UPDATE)
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     @Schema(title = "更新时间")
-    private Date updateAt;
+    private LocalDateTime updateAt;
 
     /**
      * 是否启用

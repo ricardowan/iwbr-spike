@@ -1,0 +1,105 @@
+app:
+  center: 192.168.2.95:8848
+  services:
+    spike-order: spike-order
+server:
+  port: ${port:9010}
+  servlet:
+    context-path: /spike-goods
+  tomcat:
+    max-http-form-post-size: -1
+
+spring:
+  application:
+    name: spike-goods
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${app.center}
+      username: nacos
+      password: nacos
+  main:
+    allow-bean-definition-overriding: true
+    allow-circular-references: true
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://49.235.186.30:3306/spike_goods?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&rewriteBatchedStatements=true
+    username: root
+    password: ricardowang
+  freemarker:
+    suffix: .ftl
+    cache: false
+    request-context-attribute: request
+    templateLoaderPath: [ "classpath:/templates/", "classpath:/static/" ]
+    settings:
+      number_format: 0.##################
+      datetime_format: yyyy-MM-dd HH:mm:ss
+      date_format: yyyy-MM-dd
+      time_format: HH:mm:ss
+      boolean_format: true,false
+      template_update_delay: 0
+#      auto_include: common/common.ftl
+#      auto_import: common/common.ftl as com
+      classic_compatible: true
+  liquibase:
+    enabled: true
+    drop-first: false
+    change-log: classpath:liquibase/master.xml
+  servlet:
+    multipart:
+      max-file-size: 500MB
+      max-request-size: 1000MB
+
+mybatis-plus:
+  #配置Mapper映射⽂件
+  mapper-locations: classpath*:mapper/*.xml,classpath*:mapper/*/*.xml,classpath*:com/gitee/sunchenbin/mybatis/actable/mapping/*/*.xml
+  # 配置Mybatis数据返回类型别名（默认别名为类名）
+  type-aliases-package: com.iwbr.spike.goods.entity
+  type-aliases-super-type: java.lang.Object
+  global-config:
+    refresh: true
+    db-config:
+      #字段更新插⼊策略
+      field-strategy: NOT_EMPTY
+  configuration:
+    # 配置的缓存的全局开关
+    cache-enabled: false
+    #处理语句中某些字段值是null
+    call-setters-on-nulls: true
+    #处理jdbcTypeForNull
+    jdbc-type-for-null: VARCHAR
+    #打印sql
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    #分页数据库类型
+    dbType: mysql
+
+logging:
+  level:
+    org.springframework: WARN
+    com.iwbr.spike.goods: DEBUG
+
+ribbon:
+  okhttp:
+    enabled: true
+  eureka:
+    enabled: true
+  ConnectTimeout: 100000
+  ReadTimeout: 300000
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 100000
+        readTimeout: 100000
+        loggerLevel: basic
+  httpclient:
+    enabled:  false
+  okhttp:
+    enabled: true
+  hystrix:
+    enabled: true
+
+custom:
+  store:
+    page: D:\project\static

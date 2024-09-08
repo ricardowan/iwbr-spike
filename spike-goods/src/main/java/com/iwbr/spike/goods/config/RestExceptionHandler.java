@@ -13,10 +13,9 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import java.sql.SQLSyntaxErrorException;
 
 /**
- * @author JamesWan
- *
- * @description controller层全局异常处理
- * @date 2021年08月18日 11:11
+ * @description: rest异常处理程序
+ * @author: <a href="mailto:ricardomrwang@gmail.com">wangbaorui</a>
+ * @date: 2024-09-05 21:48:58
  */
 @Slf4j
 @RestControllerAdvice(basePackages = "com.iwbr.spike.goods.web")
@@ -24,14 +23,14 @@ public class RestExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.OK)
-    public ResponseData exception(Exception e) {
+    public ResponseData<String> exception(Exception e) {
         log.error("全局异常信息：{}", e.getMessage(), e);
         return new ErrorResponseData(e.getMessage());
     }
 
     @ExceptionHandler({SQLSyntaxErrorException.class, PersistenceException.class, BadSqlGrammarException.class})
     @ResponseStatus(HttpStatus.OK)
-    public ResponseData sqlException(Exception e) {
+    public ResponseData<String> sqlException(Exception e) {
         log.error("全局异常信息：{}", e.getMessage(), e);
         String errorMessage = "执行失败，原因：SQL语法错误！";
         return new ErrorResponseData(errorMessage);
@@ -39,7 +38,7 @@ public class RestExceptionHandler {
 
     @ExceptionHandler(NullPointerException.class)
     @ResponseStatus(HttpStatus.OK)
-    public ResponseData nullPointException(Exception e) {
+    public ResponseData<String> nullPointException(Exception e) {
         log.error("全局异常信息：{}", e.getMessage(), e);
         String errorMessage = "空指针异常！";
         return new ErrorResponseData(errorMessage);

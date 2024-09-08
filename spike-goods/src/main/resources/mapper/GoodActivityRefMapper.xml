@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.iwbr.spike.goods.mapper.GoodActivityRefMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.iwbr.spike.goods.entity.GoodActivityRef">
+        <id column="id" property="id" />
+        <result column="create_at" property="createAt" />
+        <result column="update_at" property="updateAt" />
+        <result column="enabled" property="enabled" />
+        <result column="operator" property="operator" />
+        <result column="good_id" property="goodId" />
+        <result column="activity_id" property="activityId" />
+        <result column="good_spike_price" property="goodSpikePrice" />
+        <result column="good_spike_num" property="goodSpikeNum" />
+    </resultMap>
+
+</mapper>

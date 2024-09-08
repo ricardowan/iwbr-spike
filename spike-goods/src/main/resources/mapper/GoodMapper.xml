@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.iwbr.spike.goods.mapper.GoodMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.iwbr.spike.goods.entity.Good">
+        <id column="id" property="id" />
+        <result column="create_at" property="createAt" />
+        <result column="update_at" property="updateAt" />
+        <result column="enabled" property="enabled" />
+        <result column="operator" property="operator" />
+        <result column="good_name" property="goodName" />
+        <result column="good_price" property="goodPrice" />
+        <result column="good_spike_price" property="goodSpikePrice" />
+        <result column="good_stock_num" property="goodStockNum" />
+        <result column="good_alert_num" property="goodAlertNum" />
+        <result column="good_icon" property="goodIcon" />
+        <result column="good_images" property="goodImages" />
+        <result column="good_spu_id" property="goodSpuId" />
+        <result column="good_category_ids" property="goodCategoryIds" />
+        <result column="good_category_names" property="goodCategoryNames" />
+        <result column="good_brand_id" property="goodBrandId" />
+        <result column="good_brand_name" property="goodBrandName" />
+        <result column="good_scope" property="goodScope" />
+        <result column="good_sale_num" property="goodSaleNum" />
+        <result column="good_comment_num" property="goodCommentNum" />
+        <result column="good_spike_begin" property="goodSpikeBegin" />
+        <result column="good_spike_end" property="goodSpikeEnd" />
+        <result column="good_status" property="goodStatus" />
+        <result column="good_lock" property="goodLock" />
+        <result column="good_spike_num" property="goodSpikeNum" />
+    </resultMap>
+
+</mapper>
