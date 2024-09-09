@@ -26,6 +26,11 @@ spring:
     url: jdbc:mysql://49.235.186.30:3306/spike_goods?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&rewriteBatchedStatements=true
     username: root
     password: ricardowang
+    hikari:
+      max-lifetime: 1800000
+      idle-timeout: 600000
+      connection-test-query: SELECT 1
+
   freemarker:
     suffix: .ftl
     cache: false

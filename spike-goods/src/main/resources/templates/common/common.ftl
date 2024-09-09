@@ -1,4 +1,4 @@
-<#assign context_path = "${contextPath?default('/tip-portal')}">
+<#assign context_path = "${contextPath?default('/skipe-goods')}">
 <#assign templates_base_path = "template?href=">
 
 <#-- ------------+ 通用宏 +--------------- -->

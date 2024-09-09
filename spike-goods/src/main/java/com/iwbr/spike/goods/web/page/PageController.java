@@ -48,7 +48,7 @@ public class PageController extends BaseController {
             // 获取商品详情模版
             Template template = configuration.getTemplate("good-detail.ftl");
             // 根据当前商品数据将模版转换成静态文件存储
-            String intoString = FreeMarkerTemplateUtils.processTemplateIntoString(template, BeanUtil.beanToMap(good));
+            String intoString = FreeMarkerTemplateUtils.processTemplateIntoString(template, good);
             String filePath = pagePath.endsWith(File.separator) ? pagePath : pagePath.concat(File.separator);
             filePath = filePath.concat(id).concat(".html");
             File file = FileUtil.writeUtf8String(intoString, new File(filePath));

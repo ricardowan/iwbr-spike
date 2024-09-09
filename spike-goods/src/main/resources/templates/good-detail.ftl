@@ -7,7 +7,6 @@
     <title>test</title>
 </head>
 <body class="gtmap">
-<h1>hhhh</h1>
-${data}
+<h1>${goodName}</h1>
 </body>
 </html>
