@@ -1,9 +1,11 @@
 target/
+target
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
 
 ### IntelliJ IDEA ###
+.idea
 .idea/modules.xml
 .idea/jarRepositories.xml
 .idea/compiler.xml
@@ -11,6 +13,9 @@ target/
 *.iws
 *.iml
 *.ipr
+
+**/**/rebel.xml
+**/*.iml
 
 ### Eclipse ###
 .apt_generated
