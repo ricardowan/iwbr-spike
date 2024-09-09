@@ -1,0 +1,59 @@
+app:
+  center: 192.168.2.95:8848
+  services:
+    spike-order: spike-order
+server:
+  port: ${port:9016}
+  servlet:
+    context-path: /spike-dm
+  tomcat:
+    max-http-form-post-size: -1
+
+canal:
+  server: 49.235.186.30:11111
+  destination: example
+
+spring:
+  application:
+    name: spike-dm
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${app.center}
+      username: nacos
+      password: nacos
+  main:
+    allow-bean-definition-overriding: true
+    allow-circular-references: true
+  servlet:
+    multipart:
+      max-file-size: 500MB
+      max-request-size: 1000MB
+
+logging:
+  level:
+    org.springframework: WARN
+    com.iwbr.spike.dm: DEBUG
+    top.javatool: error
+
+ribbon:
+  okhttp:
+    enabled: true
+  eureka:
+    enabled: true
+  ConnectTimeout: 100000
+  ReadTimeout: 300000
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 100000
+        readTimeout: 100000
+        loggerLevel: basic
+  httpclient:
+    enabled:  false
+  okhttp:
+    enabled: true
+  hystrix:
+    enabled: true

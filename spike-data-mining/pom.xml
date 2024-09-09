@@ -19,6 +19,14 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.iwbr.spike</groupId>
+            <artifactId>spike-common</artifactId>
+        </dependency>
+        <dependency>
             <groupId>top.javatool</groupId>
             <artifactId>canal-spring-boot-starter</artifactId>
             <version>1.2.1-RELEASE</version>
