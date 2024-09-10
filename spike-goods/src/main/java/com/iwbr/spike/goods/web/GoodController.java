@@ -1,7 +1,7 @@
 package com.iwbr.spike.goods.web;
 
 import cn.hutool.core.bean.BeanUtil;
-import com.iwbr.spike.common.dto.goods.GoodDto;
+import com.iwbr.spike.common.entity.dto.goods.GoodDto;
 import com.iwbr.spike.common.response.ResponseData;
 import com.iwbr.spike.common.web.BaseController;
 import com.iwbr.spike.goods.entity.Good;

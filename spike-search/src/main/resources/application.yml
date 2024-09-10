@@ -1,0 +1,57 @@
+app:
+  center: 192.168.2.95:8848
+  services:
+    spike-order: spike-order
+server:
+  port: ${port:9015}
+  servlet:
+    context-path: /spike-search
+  tomcat:
+    max-http-form-post-size: -1
+
+spring:
+  application:
+    name: spike-search
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${app.center}
+      username: nacos
+      password: nacos
+  elasticsearch:
+    rest:
+      uris: http://192.168.2.194:9200
+  main:
+    allow-bean-definition-overriding: true
+    allow-circular-references: true
+  servlet:
+    multipart:
+      max-file-size: 500MB
+      max-request-size: 1000MB
+
+logging:
+  level:
+    org.springframework: WARN
+    com.iwbr.spike.search: INFO
+
+ribbon:
+  okhttp:
+    enabled: true
+  eureka:
+    enabled: true
+  ConnectTimeout: 100000
+  ReadTimeout: 300000
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 100000
+        readTimeout: 100000
+        loggerLevel: basic
+  httpclient:
+    enabled:  false
+  okhttp:
+    enabled: true
+  hystrix:
+    enabled: true

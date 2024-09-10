@@ -1,4 +1,4 @@
-package com.iwbr.spike.common.dto.goods;
+package com.iwbr.spike.common.entity.dto.goods;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -75,9 +75,11 @@ public class GoodDto implements Serializable {
     private Integer goodCommentNum;
 
     @Schema(title = "秒杀开始时间")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private LocalDateTime goodSpikeBegin;
 
     @Schema(title = "秒杀结束时间")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private LocalDateTime goodSpikeEnd;
 
     @Schema(title = "商品状态（1普通商品/2秒杀商品）")
