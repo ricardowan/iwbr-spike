@@ -48,21 +48,75 @@
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-archetype-plugin</artifactId>
+            </plugin>
 <!--            <plugin>-->
-<!--                <groupId>org.springframework.boot</groupId>-->
-<!--                <artifactId>spring-boot-maven-plugin</artifactId>-->
-<!--            </plugin>-->
-<!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-antrun-plugin</artifactId>-->
-<!--            </plugin>-->
-<!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-assembly-plugin</artifactId>-->
-<!--            </plugin>-->
-<!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-archetype-plugin</artifactId>-->
+<!--                <groupId>com.google.cloud.tools</groupId>-->
+<!--                <artifactId>jib-maven-plugin</artifactId>-->
+<!--                <configuration>-->
+<!--                    <from>-->
+<!--                        &lt;!&ndash; 基础镜像 &ndash;&gt;-->
+<!--                        <image>openjdk:8-jdk-alpine</image>-->
+<!--                    </from>-->
+<!--                    &lt;!&ndash; 镜像信息 &ndash;&gt;-->
+<!--                    <to>-->
+<!--                        &lt;!&ndash; 镜像信息：仓库地址/镜像名称:镜像tag &ndash;&gt;-->
+<!--                        <image>${docker.registry}/${artifactId}:${version}</image>-->
+<!--                        &lt;!&ndash; tag信息，为镜像推送做准备 &ndash;&gt;-->
+<!--                        <tags>-->
+<!--                            <tag>${version}</tag>-->
+<!--                        </tags>-->
+<!--                        &lt;!&ndash; 镜像仓库认证信息 &ndash;&gt;-->
+<!--                        <auth>-->
+<!--                            <username>${docker.registry.username}</username>-->
+<!--                            <password>${docker.registry.password}</password>-->
+<!--                        </auth>-->
+<!--                    </to>-->
+<!--                    &lt;!&ndash; 容器信息 &ndash;&gt;-->
+<!--                    <container>-->
+<!--                        &lt;!&ndash; 设置启动参数 &ndash;&gt;-->
+<!--                        <jvmFlags>-->
+<!--                            <jvmFlag>-Djava.security.egd=file:/dev/./urandom</jvmFlag>-->
+<!--                        </jvmFlags>-->
+<!--                        &lt;!&ndash; 指定volume挂载卷 &ndash;&gt;-->
+<!--                        <volumes>-->
+<!--                            <volume>/logs</volume>-->
+<!--                        </volumes>-->
+<!--                        &lt;!&ndash; 暴露端口号 &ndash;&gt;-->
+<!--                        <ports>-->
+<!--                            <port>9010</port>-->
+<!--                        </ports>-->
+<!--                        &lt;!&ndash; OCI格式镜像 &ndash;&gt;-->
+<!--                        <format>OCI</format>-->
+<!--                        &lt;!&ndash; 指定镜像创建时间与本地时间一致 &ndash;&gt;-->
+<!--                        <creationTime>USE_CURRENT_TIMESTAMP</creationTime>-->
+<!--                    </container>-->
+<!--                    &lt;!&ndash; 允许向不被信任的仓库推送镜像 &ndash;&gt;-->
+<!--                    <allowInsecureRegistries>true</allowInsecureRegistries>-->
+<!--                </configuration>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <id>jib-maven-plugin</id>-->
+<!--                        <phase>package</phase>-->
+<!--                        <goals>-->
+<!--                            <goal>build</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                </executions>-->
 <!--            </plugin>-->
         </plugins>
     </build>

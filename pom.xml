@@ -48,7 +48,9 @@
         <liquibase.version>4.9.1.1</liquibase.version>
         <mybatis.plus.version>3.5.1</mybatis.plus.version>
         <project.scm.host>http://dev2.gtis.com.cn/repository</project.scm.host>
-        <docker.register>registry.cn-hangzhou.aliyuncs.com/lanxy88</docker.register>
+        <docker.registry>192.168.29.128:5000</docker.registry>
+        <docker.registry.username>admin</docker.registry.username>
+        <docker.registry.password>123456</docker.registry.password>
     </properties>
 
     <dependencyManagement>
@@ -257,6 +259,11 @@
                             </goals>
                         </execution>
                     </executions>
+                </plugin>
+                <plugin>
+                    <groupId>com.google.cloud.tools</groupId>
+                    <artifactId>jib-maven-plugin</artifactId>
+                    <version>3.4.3</version>
                 </plugin>
             </plugins>
         </pluginManagement>
